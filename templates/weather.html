@@ -6,9 +6,12 @@
         <h2 class="text-2xl font-bold mb-4 dark:text-white">Weather Search</h2>
         <form method="post" class="mb-4">
             {% csrf_token %}
-            <div class="flex">
-                <input type="text" name="city" placeholder="Enter city name" class="flex-grow p-2 border rounded-l dark:bg-gray-700 dark:text-white dark:border-gray-600">
-                <button type="submit" class="bg-blue-500 text-white p-2 rounded-r hover:bg-blue-600">Search</button>
+            <div class="flex flex-col">
+                <label for="city" class="input-instruction mb-2">Enter city name:</label>
+                <div class="flex">
+                    <input type="text" name="city" id="city" placeholder="e.g., London" class="flex-grow p-2 rounded-l" required>
+                    <button type="submit" class="bg-blue-500 text-white p-2 rounded-r hover:bg-blue-600">Search</button>
+                </div>
             </div>
         </form>
         

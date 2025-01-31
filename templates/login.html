@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl dark:bg-gray-800">
     <div class="p-8">
-        <h2 class="text-2xl font-bold mb-4">Login</h2>
-        <form method="post" action="{% url 'login' %}">
+        <h2 class="text-2xl font-bold mb-6 text-center dark:text-white">Login</h2>
+        <form method="post" action="{% url 'login' %}" class="space-y-4">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div>
+                <label for="{{ form.username.id_for_label }}" class="input-instruction">Username:</label>
+                <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" class="w-full" required>
+            </div>
+            <div>
+                <label for="{{ form.password.id_for_label }}" class="input-instruction">Password:</label>
+                <input type="password" name="{{ form.password.name }}" id="{{ form.password.id_for_label }}" class="w-full" required>
+            </div>
             {% if form.errors %}
-                <p class="text-red-500">Your username and password didn't match. Please try again.</p>
+                <p class="text-red-500 text-xs italic">Your username and password didn't match. Please try again.</p>
             {% endif %}
             <input type="hidden" name="next" value="{{ next }}">
-            <button type="submit" class="bg-blue-500 text-white p-2 rounded mt-4">Login</button>
+            <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded mt-4 hover:bg-blue-600">Login</button>
         </form>
+        <p class="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+            Don't have an account? 
+            <a href="{% url 'register' %}" class="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+                Register here
+            </a>
+        </p>
     </div>
 </div>
 {% endblock %}
