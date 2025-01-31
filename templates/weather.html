@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl dark:bg-gray-800">
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
     <div class="p-8">
-        <h2 class="text-2xl font-bold mb-4 dark:text-white">Weather Search</h2>
+        <h2 class="text-2xl font-bold mb-4">Weather Search</h2>
         <form method="post" class="mb-4">
             {% csrf_token %}
             <div class="flex flex-col">
@@ -17,14 +17,14 @@
         
         {% if city %}
             <div class="mt-4">
-                <h3 class="text-xl font-semibold dark:text-white">{{ city }}</h3>
+                <h3 class="text-xl font-semibold">{{ city }}</h3>
                 <div class="flex items-center">
                     <i data-feather="{{ weather_icon }}" class="mr-2"></i>
-                    <p class="dark:text-gray-300">{{ description }}</p>
+                    <p>{{ description }}</p>
                 </div>
-                <p class="dark:text-gray-300">Temperature: {{ temperature }}°C</p>
-                <p class="dark:text-gray-300">Humidity: {{ humidity }}%</p>
-                <p class="dark:text-gray-300">Wind Speed: {{ wind_speed }} m/s</p>
+                <p>Temperature: {{ temperature }}°C</p>
+                <p>Humidity: {{ humidity }}%</p>
+                <p>Wind Speed: {{ wind_speed }} m/s</p>
                 
                 <form method="post" action="{% url 'add_favorite' %}" class="mt-4">
                     {% csrf_token %}
